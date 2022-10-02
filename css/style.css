@@ -32,8 +32,38 @@ header video {
     font-size: 20px !important;
   }
   video {
-    height: 200px;
+    height: 50% !important;
   }
+}
+body {
+  color: #fff;
+  background-color: rgb(61, 19, 19);
+  font-family: "Racing Sans One";
+}
+body .column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+body h2 {
+  text-align: center;
+  font-size: 2em;
+}
+body input, body select {
+  width: 100%;
+  height: 25px;
+  margin: 10px 0;
+}
+body button {
+  width: 50%;
+  margin: 0 25%;
+  height: 25px;
+  background-color: #000;
+  color: #fff;
+}
+body button:hover {
+  background-color: rgb(87, 81, 81);
+  color: #000;
 }
 
 /*# sourceMappingURL=style.css.map */
