@@ -57,13 +57,14 @@ const getApiUrl = (resourse, resourseId, subResourse) => {
 }
 
 const fecthUrl = async url => {
-
     const response = await fetch(url)
-    console.log(response)
+    const json = await response.json()
+    return json 
 }
 
 const fetchComics = async() => {
-    const data = fecthUrl(getApiUrl('comics'))
+    const data = await fecthUrl(getApiUrl('comics'))
+    console.log(data)
 }
 
 const search = () => {
