@@ -2,7 +2,13 @@
     margin:0;
     padding: 0;
 }
+:root{
+    --fondo:#490707;
+    --hover:#0a0000;
+}
 
 @import './header';
 @import './responsive';
 @import './navbar';
+@import './main';
+@import './footer';

@@ -1,0 +1,22 @@
+.comic {
+    width: calc(100% / 5 - 2 * 10px);
+    margin: 0 10px 40px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+}
+
+.results {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 40px;
+    min-height: 300px;
+  }
+  
+  .no-results {
+    margin-left: 10px;
+}
+
+.hidden{
+    display: none;
+}
