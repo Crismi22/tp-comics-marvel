@@ -72,6 +72,29 @@ body button:hover {
   color: #000;
 }
 
+.comic {
+  width: calc(20% - 20px);
+  margin: 0 10px 40px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+
+.results {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 40px;
+  min-height: 300px;
+}
+
+.no-results {
+  margin-left: 10px;
+}
+
+.hidden {
+  display: none;
+}
+
 footer {
   background: rgb(73, 7, 7);
   background: radial-gradient(circle, rgb(73, 7, 7) 0%, #0a0000 62%);
@@ -92,11 +115,14 @@ footer .redes-footer li a i {
   text-align: center;
   align-items: center;
   border-radius: 50%;
+  border: 0.5px solid #000;
   margin: 10px;
   width: 20px;
   height: 20px;
   transition: 0.5s;
-  text-decoration: underline;
+}
+footer ul {
+  text-decoration: none;
   list-style: none;
 }
 footer .redes-footer i:hover {
@@ -106,6 +132,7 @@ footer .redes-footer i:hover {
   border-radius: 50%;
   background-color: var(--hover);
   color: #fff;
+  text-decoration: none;
 }
 
 /*# sourceMappingURL=style.css.map */

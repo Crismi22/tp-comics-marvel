@@ -8,7 +8,7 @@ const comicWriters = document.querySelector('.comic-writers');
 const comicDescription = document.querySelector('.comic-description');
 const comicSection = document.querySelector('.comic-section');
 
-//  ********************
+//  ******************** 
 //  API MARVEL INICIAL
 //  *******************
 
@@ -29,7 +29,7 @@ const getSearchParams = (isSearch) => {
       return searchParams
     }
   
-    console.log(isSearch)
+    // console.log(isSearch)
 
   if (searchType.value === 'comics') {
     searchParams += `${searchType.value}${searchParams}`;
@@ -42,7 +42,7 @@ const getSearchParams = (isSearch) => {
 const getApiUrl = (resourse, resourseId, subResourse) => {
     const isSearch = !resourseId && !subResourse;
     let url = `${baseUrl}${resourse}`
-    console.log(url)
+    // console.log(url)
 
     if(resourseId){
         url += `/${resourseId}`
@@ -63,8 +63,36 @@ const fecthUrl = async url => {
 }
 
 const fetchComics = async() => {
-    const data = await fecthUrl(getApiUrl('comics'))
-    console.log(data)
+    const {data : {results, total}
+        } = await fecthUrl(getApiUrl('comics'))
+    // console.log(results)
+    // console.log(total)
+    printComics(results)
+}
+
+// **************************
+//         PINTAR COMICS
+// **************************
+
+const printComics = comics => {
+    if(comics.length === 0){
+        results.innerHTML = '<h2 class="not-results">No hemos encontrado resultados</h2>'
+    }
+    for (const comic of comics) {
+        const comicCard = document.createElement('div');
+        comicCard.tabIndex = 0;
+        comicCard.classList.add('comic');
+        comicCard.onclick = () => {
+            console.log(comic, comic.id)
+        }
+        comicCard.innerHTML = `
+        <div class="comic-img-container">
+          <img src="${comic.thumbnail.path}/portrait_uncanny.${comic.thumbnail.extension}" alt="${comic.title}" class="comic-thumbnail" />
+          </div>
+          <h3 class="comic-title">${comic.title}</h3>`
+          
+        results.append(comicCard)
+    } 
 }
 
 const search = () => {

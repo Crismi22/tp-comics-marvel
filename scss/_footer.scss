@@ -18,13 +18,16 @@ footer{
         text-align: center;
         align-items: center;
         border-radius: 50%;
+        border: .5px solid #000;
         margin: 10px;
         width: 20px;
         height: 20px;
         transition: .5s;
-        text-decoration:underline;
-        list-style: none;
     }
+        ul{
+            text-decoration: none;
+            list-style: none;
+        }
     .redes-footer i:hover{
         transform: translatey(-3);
         transform: scale(1.1);
@@ -32,5 +35,6 @@ footer{
         border-radius: 50%;
         background-color: var(--hover);
         color: #fff;
+        text-decoration: none;
     }
 }

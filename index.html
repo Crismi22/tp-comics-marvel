@@ -59,7 +59,67 @@
             </div>
           </div>
         </div>
-      </nav>    
+      </nav>
+      <div>
+        <section class="comic-section hidden">
+          <img src="" alt="" class="comic-cover" />
+          <div class="comic-details">
+            <h2 class="comic-title"></h2>
+            <h3>Publicado:</h3>
+            <p class="comic-published"></p>
+            <h3>Guionistas:</h3>
+            <p class="comic-writers"></p>
+            <h3>Descripción:</h3>
+            <p class="comic-description"></p>
+          </div>
+        </section>
+        <section class="character-section hidden">
+          <img src="" alt="" class="character-portrait" />
+          <div class="character-details">
+            <h2 class="character-name"></h2>
+            <p class="character-description"></p>
+          </div>
+        </section>
+        <section class="results-section">
+          <h2 class="results-title">Resultados</h2>
+          <p class="results-count">
+            <span class="results-number">0</span> RESULTADOS
+          </p>
+          <div class="results" class="results"></div>
+          <div class="pagination">
+            <button
+              type="button"
+              class="first-page pagination-button"
+              aria-label="Página previa"
+            >
+              <i class="fas fa-angle-double-left" aria-hidden="true"></i>
+            </button>
+            <button
+              type="button"
+              class="previous-page pagination-button"
+              aria-label="Página Anterior">
+              <i class="fas fa-angle-left" aria-hidden="true"></i>
+            </button>
+            <button
+              type="button"
+              class="next-page pagination-button"
+              aria-label="Siguiente Página"
+            >
+              <i class="fas fa-angle-right" aria-hidden="true"></i>
+            </button>
+            <button
+              type="button"
+              class="last-page pagination-button"
+              aria-label="Última página"
+            >
+              <i class="fas fa-angle-double-right" aria-hidden="true"></i>
+            </button>
+          </div>
+        </section>
+        <div class="loader-container hidden">
+          <div class="loader"></div>
+        </div>
+      </div>   
     </main>
     <footer>
       <div class="container footer-div">
