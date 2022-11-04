@@ -18,8 +18,7 @@
   },
   "homepage": "https://github.com/Crismi22/tp-comics-marvel#readme",
   "dependencies": {
-    "animate.css": "^4.1.1",
-    "bulma": "^0.9.4",
+    "bootstrap": "^5.2.2",
     "sass": "^1.55.0"
   }
 }
