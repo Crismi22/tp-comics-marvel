@@ -5,8 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Racing+Sans+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./css/style.css">
+    <link type="ico/png" sizes="64x64" rel="icon" href="./asset/favicon.ico">
     <title>Comics Marvel CB</title>
 </head>
 <body>
@@ -16,24 +18,24 @@
         <h1 class="logo">ADA COMICS</h1>
       </div>
       <div class="hero">
-        <video autoplay muted preload src="./Intro Marvel Studios HD.mp4"></video>
+        <video autoplay muted preload loop src="./Intro Marvel Studios HD.mp4"></video>
         <!-- <img src="./hero.jpg" alt="portada de comics"> -->
       </div>
     </header>
-    <main class="column">
-      <nav>
+    <main>
+      <nav class="column">
         <div class="search">
+          <button id="back-button" class="hidden">ATRÁS</button>
           <h2 id="search-title">Búsqueda</h2>
-          <div class="search-container">
-            <div class="search-input-container">
-              <input
-                type="text"
-                id="search-input"
-                class="search-input"
-                placeholder="Ingresá tu búsqueda"
-                aria-labelledby="search-title"
-              />
-            </div>
+          <form id="search-comics" accion="">
+            <input
+              type="text"
+              name="searching"
+              id="search-input"
+              class="search-input"
+              placeholder="Ingresá tu búsqueda"
+              aria-labelledby="search-title">
+
             <div class="search-inner-container">
               <div class="sort-container">
                 <label for="search-type">TIPO</label>
@@ -42,7 +44,7 @@
                   <option value="characters">PERSONAJES</option>
                 </select>
                 <label for="search-sort">ORDEN</label>
-                <select name="search-sort" id="search-sort">
+                <select name="control-order-by" class="search-select" id="control-order-by">
                   <option value="name" class="character-option">A-Z</option>
                   <option value="-name" class="character-option">Z-A</option>
                   <option value="title" class="comic-option">A-Z</option>
@@ -55,14 +57,14 @@
                   </option>
                 </select>
               </div>
-              <button type="button" class="search-button">BUSCAR</button>
+              <button type="submit" class="search-button">BUSCAR</button>
             </div>
-          </div>
+          </form>
         </div>
       </nav>
       <div>
         <section class="comic-section hidden">
-          <img src="" alt="" class="comic-cover" />
+          <img src="" alt="" class="comic-cover">
           <div class="comic-details">
             <h2 class="comic-title"></h2>
             <h3>Publicado:</h3>
@@ -74,24 +76,38 @@
           </div>
         </section>
         <section class="character-section hidden">
-          <img src="" alt="" class="character-portrait" />
+          <img src="" alt="" class="character-portrait">
           <div class="character-details">
             <h2 class="character-name"></h2>
             <p class="character-description"></p>
           </div>
         </section>
         <section class="results-section">
-          <h2 class="results-title">Resultados</h2>
-          <p class="results-count">
-            <span class="results-number">0</span> RESULTADOS
-          </p>
-          <div class="results" class="results"></div>
+          <div class="info-results">
+            <h2 class="results-title">Resultados</h2>
+            <p class="results-count">
+              <span class="results-number">0</span>
+              RESULTADOS</p>
+          </div>
+          
+          <div class="results" id="comics-results">
+            <div class="container-comics">
+              <div class="col s6 m6">
+                <div class="row">
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="loader-container">
+            <span class="loader"></span>
+          </div>
           <div class="pagination">
             <button
               type="button"
               class="first-page pagination-button"
-              aria-label="Página previa"
-            >
+              aria-label="Página previa">
               <i class="fas fa-angle-double-left" aria-hidden="true"></i>
             </button>
             <button
@@ -103,22 +119,17 @@
             <button
               type="button"
               class="next-page pagination-button"
-              aria-label="Siguiente Página"
-            >
+              aria-label="Siguiente Página">
               <i class="fas fa-angle-right" aria-hidden="true"></i>
             </button>
             <button
               type="button"
               class="last-page pagination-button"
-              aria-label="Última página"
-            >
+              aria-label="Última página">
               <i class="fas fa-angle-double-right" aria-hidden="true"></i>
             </button>
           </div>
         </section>
-        <div class="loader-container hidden">
-          <div class="loader"></div>
-        </div>
       </div>   
     </main>
     <footer>
@@ -166,6 +177,7 @@
 
 
 
-    <script src="./app.js"></script>
+    <script src="./js/api.js"></script>
+    <script src="./js/app.js"></script>
 </body>
 </html>
