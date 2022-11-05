@@ -13,9 +13,15 @@ btnOcultar.addEventListener('click', () => {
 
 const loader = document.querySelector('.loader-container');
 
-const offLoader = () => loader.classList.add('hidden');
-const onLoader = () => loader.classList.remove('hidden');
+const offLoader = () => {
+    loader.classList.add('hidden');
+    getComics()
 
+}
+const onLoader = () => {
+    loader.classList.remove('hidden');
+
+}
 /**************
  * COMICS
  **************/
@@ -38,6 +44,7 @@ const loadComics = async () => {
    
 
     const results = document.getElementById('comics-results');
+    const backBtn = document.getElementById('back-button')
     const container = document.createElement('div');
     const row = document.createElement('div');
 
@@ -47,16 +54,30 @@ const loadComics = async () => {
     container.classList.add('container');
     row.classList.add('row');
     
-
+    offLoader();
 
     comics.forEach(comic => {
         // console.log(comic)
-
+        onLoader();
         const card = document.createElement('div');
         const cardImg = document.createElement('img');
         const cardBody = document.createElement('div');
         const colum = document.createElement('div');
         const title = document.createElement('h3')
+
+        card.addEventListener('click', () => {
+            loadDetail(comic)
+            onLoader()
+            results.classList.add('hidden');
+            backBtn.classList.remove('hidden');
+            
+        });
+
+        backBtn.addEventListener('click', () => {
+            results.classList.remove('hidden');
+            backBtn.classList.add('hidden');
+        
+        })
 
         const texTitle = document.createTextNode(comic.title)
 
@@ -79,11 +100,23 @@ const loadComics = async () => {
     });
 }
 
+const loadDetail = (comic) => {
+    const comicDetail = document.getElementById('comic-details'); 
+    const sectionDetail = document.querySelector('.comic-section');
+
+    sectionDetail.classList.remove('hidden')
+    comicDetail.classList.remove('hidden');
+
+    const div = document.createElement('div');
+    div.appendChild(document.createTextNode(comic.description));
+    
+}
+
 // ***********
 // PERSONAJES
 // ***********
 const loadCharacter = async () => {
-    
+
     const response = await getCharacter();
     const data = response.data //nos trae de la paginacion "offset"
     const character = data.results;
@@ -153,7 +186,7 @@ formSearch.addEventListener('submit', e => {
     const params = new URLSearchParams(window.location.search);
 
     params.set('order', orderBy);
-    params.set('input', searchInput);
+    params.set('offset', 20);
     params.set('type', searchType);
 
     window.location.href = window.location.pathname +'?'+ params.toString();
