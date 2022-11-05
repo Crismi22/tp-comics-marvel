@@ -26,7 +26,6 @@
     <main>
       <nav class="column">
         <div class="search">
-          <button id="back-button" class="hidden">ATRÁS</button>
           <h2 id="search-title">Búsqueda</h2>
           <form id="search-comics" accion="">
             <input
@@ -65,8 +64,9 @@
       </nav>
       <div>
         <section class="comic-section hidden">
+          <button id="back-button" class="hidden">ATRÁS</button>
           <img src="" alt="" class="comic-cover">
-          <div class="comic-details">
+          <div id="comic-details">
             <h2 class="comic-title"></h2>
             <h3>Publicado:</h3>
             <p class="comic-published"></p>
@@ -99,7 +99,7 @@
             </div>
 
           <div class="loader-container">
-            <span class="loader loader-container">
+            <span class="loader hidden">
               <img src="./asset/51rcrIp5iRL._AC_SL1000_-removebg-preview.png" alt="deadpool-clipart">
             </span>
           </div>
