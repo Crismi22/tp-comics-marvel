@@ -18,8 +18,9 @@
         <h1 class="logo">ADA COMICS</h1>
       </div>
       <div class="hero">
-        <video autoplay muted preload loop src="./Intro Marvel Studios HD.mp4"></video>
-        <!-- <img src="./hero.jpg" alt="portada de comics"> -->
+        <video autoplay muted preload loop src="./Intro Marvel Studios HD.mp4" class="video"></video>
+        <img src="./hero.jpg" alt="portada de comics" class="image hidden">
+        <button id="ocultar-video" class="ocultar-video">🔺🔻</button>
       </div>
     </header>
     <main>
@@ -92,6 +93,9 @@
           
             <div class="results" id="comics-results">
          
+            </div>
+            <div class="results hidden" id="character-results">
+
             </div>
 
           <div class="loader-container">
