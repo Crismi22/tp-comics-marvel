@@ -15,9 +15,3 @@ const getComics = async (offset, orderBy) => {
   
 }
 //EN LA LINEA 12 TIRA ERROR Y ME ROMPE EL CODIGO
-
-// const getCharacter = async (offset, orderBy) => {
-//   const character = await fetch(`${baseUrl}/characters?apikey=${apiPublic}&offset=${offset}0&orderBy=${orderBy}title`);
-//   const data2 = character.json();
-//   return data2
-// }

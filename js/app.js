@@ -11,6 +11,11 @@ btnOcultar.addEventListener('click', () => {
     image.classList.toggle('hidden')
 });
 
+const loader = document.querySelector('.loader-container');
+
+const offLoader = () => loader.classList.add('hidden');
+const onLoader = () => loader.classList.remove('hidden');
+
 /**************
  * COMICS
  **************/
@@ -18,9 +23,10 @@ btnOcultar.addEventListener('click', () => {
 //     const params = new URLSearchParams(window.location.search);
 //     return params
 // }
-//NO CAMBIA LA VISTA COMICS
+//NO CAMBIA LA VISTA  COMICS
 
 const loadComics = async () => {
+    
 
     // const params = getParams();
     const comicsResponse = await getComics();
@@ -29,8 +35,7 @@ const loadComics = async () => {
 
     const data = comicsResponse.data //nos trae de la paginacion "offset"
     const comics = data.results;
-
-    console.log(data)
+   
 
     const results = document.getElementById('comics-results');
     const container = document.createElement('div');
@@ -77,62 +82,58 @@ const loadComics = async () => {
 // ***********
 // PERSONAJES
 // ***********
-// const loadCharacter = async () => {
-    // const comicsResponse = await getCharacter();
-    // const data = comicsResponse.data //nos trae de la paginacion "offset"
-    // const comics = data.results;
-
-    // console.log(data)
-
-    // const results = document.getElementById('comics-results');
-    // const container = document.createElement('div');
-    // const row = document.createElement('div');
-
-    // results.appendChild(container)
-    // container.appendChild(row)
+const loadCharacter = async () => {
     
-    // container.classList.add('container');
-    // row.classList.add('row');
+    const response = await getCharacter();
+    const data = response.data //nos trae de la paginacion "offset"
+    const character = data.results;
+
+    console.log(data)
+
+    const results2 = document.getElementById('character-results');
+    const container = document.createElement('div');
+    const row = document.createElement('div');
+
+    results2.appendChild(container)
+    container.appendChild(row)
+    
+    container.classList.add('container');
+    row.classList.add('row');
+    results2.classList.remove('hidden')
+
     
 
 
-    // comics.forEach(comic => {
-    //     console.log(comic)
+    character.forEach(character => {
+        console.log(character)
 
-    //     const card = document.createElement('div');
-    //     const cardImg = document.createElement('img');
-    //     const cardBody = document.createElement('div');
-    //     const colum = document.createElement('div');
-    //     const title = document.createElement('h3')
-
-    //     const texTitle = document.createTextNode(comic.title)
-
-    //     card.appendChild(cardImg);
-    //     card.appendChild(cardBody);
-    //     colum.appendChild(card);
-    //     cardBody.appendChild(title);
-    //     title.appendChild(texTitle);
-
-    //     card.classList.add('card');
-    //     cardImg.classList.add('card-img-top');
-    //     cardBody.classList.add('card-body');
-    //     colum.classList.add('col-md-3');
-    //     title.classList.add('comic-title');
-
-    //     row.appendChild(colum)
-    //     cardImg.setAttribute('src', `${comic.thumbnail.path}.${comic.thumbnail.extension}`);
+        const card = document.createElement('div');
+        const cardImg = document.createElement('img');
+        const cardBody = document.createElement('div');
+        const colum = document.createElement('div');
+        const title = document.createElement('h3')
 
 
-//     });
-// }
+        card.appendChild(cardImg);
+        card.appendChild(cardBody);
+        colum.appendChild(card);
+        cardBody.appendChild(title);
 
-loadComics();
+        card.classList.add('card');
+        cardImg.classList.add('card-img-top');
+        cardBody.classList.add('card-body');
+        colum.classList.add('col-md-3');
 
-// const loader = document.querySelector('.loader');
+        row.appendChild(colum)
+        cardImg.setAttribute('src', `${character.thumbnail.path}.${character.thumbnail.extension}`);
 
-//     if(loadComics === true){
-//         loader.classList.add('hidden');
-//     }
+
+    });
+}
+
+
+
+
 
 //  **********
 //   BUSQUEDA
@@ -142,6 +143,7 @@ const formSearch = document.getElementById('search-comics');
 
 formSearch.addEventListener('submit', e => {
     e.preventDefault();
+    onLoader();
     
     const orderBy = e.target['control-order-by'].value
     const searchInput = e.target.searching.value
@@ -155,7 +157,7 @@ formSearch.addEventListener('submit', e => {
     params.set('type', searchType);
 
     window.location.href = window.location.pathname +'?'+ params.toString();
-
+    offLoader();
 })
 
 
@@ -164,5 +166,12 @@ formSearch.addEventListener('submit', e => {
 
 
 
+const init = () => {  
+    loadComics();
+    loadCharacter();
+    offLoader();
 
+}
+
+init();
 
