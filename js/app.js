@@ -15,7 +15,7 @@ const loader = document.querySelector('.loader-container');
 
 const offLoader = () => {
     loader.classList.add('hidden');
-    getComics()
+    // getComics() Esto provocaba doble request al inicar.
 
 }
 const onLoader = () => {
@@ -115,9 +115,9 @@ const loadDetail = (comic) => {
 // ***********
 // PERSONAJES
 // ***********
-const loadCharacter = async () => {
+const loadCharacters = async (params) => {
 
-    const response = await getCharacter();
+    const response = await getCharacters(params.get('order'), params.get('offset'));
     const data = response.data //nos trae de la paginacion "offset"
     const character = data.results;
 
@@ -199,10 +199,15 @@ formSearch.addEventListener('submit', e => {
 
 
 
-const init = () => {  
-    loadComics();
-    loadCharacter();
-    offLoader();
+const init = async () => { 
+    const params = new URLSearchParams(window.location.search);
+
+    if(params.get('type') === "characters") {
+        await loadCharacters(params);
+    } else {
+        await loadComics(params);
+    }
+    // offLoader(); Lo estas invocando en loadComics, no es necesario en esta linea
 
 }
 
